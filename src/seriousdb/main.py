@@ -56,6 +56,6 @@ def get_all(cache: Annotated[Cache, Depends(get_cache)]) -> dict[str, str]:
         return cache.db.copy()
 
 
-@app.delete("/db")
+@app.delete("/db", status_code=204)
 def delete(key: str, cache: Annotated[Cache, Depends(get_cache)]) -> str:
     return cache.delete(key)
